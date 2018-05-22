@@ -1,0 +1,274 @@
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            (None, 256, 256, 3)  0                                            
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 256, 256, 32) 896         input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 256, 256, 32) 9248        conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 256, 256, 32) 128         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+max_pooling2d_1 (MaxPooling2D)  (None, 128, 128, 32) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 128, 128, 64) 18496       max_pooling2d_1[0][0]            
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 128, 128, 64) 36928       conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 128, 128, 64) 256         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+max_pooling2d_2 (MaxPooling2D)  (None, 64, 64, 64)   0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 64, 64, 128)  73856       max_pooling2d_2[0][0]            
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 64, 64, 128)  147584      conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 64, 64, 128)  512         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+max_pooling2d_3 (MaxPooling2D)  (None, 32, 32, 128)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 32, 32, 256)  295168      max_pooling2d_3[0][0]            
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 32, 32, 256)  590080      conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 32, 32, 256)  1024        conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+conv2d_transpose_1 (Conv2DTrans (None, 64, 64, 128)  131200      batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 64, 64, 256)  0           conv2d_transpose_1[0][0]         
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 64, 64, 128)  295040      concatenate_1[0][0]              
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 64, 64, 128)  147584      conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 64, 64, 128)  512         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+conv2d_transpose_2 (Conv2DTrans (None, 128, 128, 64) 32832       batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+concatenate_2 (Concatenate)     (None, 128, 128, 128 0           conv2d_transpose_2[0][0]         
+                                                                 batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 128, 128, 64) 73792       concatenate_2[0][0]              
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 128, 128, 64) 36928       conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 128, 128, 64) 256         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+conv2d_transpose_3 (Conv2DTrans (None, 256, 256, 32) 8224        batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+concatenate_3 (Concatenate)     (None, 256, 256, 64) 0           conv2d_transpose_3[0][0]         
+                                                                 batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 256, 256, 32) 18464       concatenate_3[0][0]              
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 256, 256, 32) 9248        conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 256, 256, 32) 128         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 256, 256, 1)  33          batch_normalization_7[0][0]      
+==================================================================================================
+Total params: 1,928,417
+Trainable params: 1,927,009
+Non-trainable params: 1,408
+__________________________________________________________________________________________________
+Epoch 1/50
+
+Epoch 00001: val_soft_sorensen_dice improved from -inf to 0.05193, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-01-0.0519.hdf5
+ - 96s - loss: 0.7989 - binary_crossentropy: 0.7989 - soft_sorensen_dice: 0.0343 - hard_sorensen_dice: 0.0370 - val_loss: 0.6907 - val_binary_crossentropy: 0.6907 - val_soft_sorensen_dice: 0.0519 - val_hard_sorensen_dice: 0.0666
+Epoch 2/50
+
+Epoch 00002: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.6871 - binary_crossentropy: 0.6871 - soft_sorensen_dice: 0.0405 - hard_sorensen_dice: 0.0560 - val_loss: 0.6671 - val_binary_crossentropy: 0.6671 - val_soft_sorensen_dice: 0.0474 - val_hard_sorensen_dice: 0.0698
+Epoch 3/50
+
+Epoch 00003: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.6623 - binary_crossentropy: 0.6623 - soft_sorensen_dice: 0.0426 - hard_sorensen_dice: 0.0709 - val_loss: 0.6621 - val_binary_crossentropy: 0.6621 - val_soft_sorensen_dice: 0.0454 - val_hard_sorensen_dice: 0.0697
+Epoch 4/50
+
+Epoch 00004: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.6449 - binary_crossentropy: 0.6449 - soft_sorensen_dice: 0.0437 - hard_sorensen_dice: 0.0887 - val_loss: 0.6484 - val_binary_crossentropy: 0.6484 - val_soft_sorensen_dice: 0.0449 - val_hard_sorensen_dice: 0.0737
+Epoch 5/50
+
+Epoch 00005: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.6293 - binary_crossentropy: 0.6293 - soft_sorensen_dice: 0.0439 - hard_sorensen_dice: 0.1080 - val_loss: 0.6346 - val_binary_crossentropy: 0.6346 - val_soft_sorensen_dice: 0.0448 - val_hard_sorensen_dice: 0.0818
+Epoch 6/50
+
+Epoch 00006: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.6140 - binary_crossentropy: 0.6140 - soft_sorensen_dice: 0.0455 - hard_sorensen_dice: 0.1305 - val_loss: 0.6153 - val_binary_crossentropy: 0.6153 - val_soft_sorensen_dice: 0.0458 - val_hard_sorensen_dice: 0.0990
+Epoch 7/50
+
+Epoch 00007: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.5977 - binary_crossentropy: 0.5977 - soft_sorensen_dice: 0.0465 - hard_sorensen_dice: 0.1623 - val_loss: 0.5894 - val_binary_crossentropy: 0.5894 - val_soft_sorensen_dice: 0.0461 - val_hard_sorensen_dice: 0.1167
+Epoch 8/50
+
+Epoch 00008: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.5787 - binary_crossentropy: 0.5787 - soft_sorensen_dice: 0.0472 - hard_sorensen_dice: 0.1872 - val_loss: 0.5739 - val_binary_crossentropy: 0.5739 - val_soft_sorensen_dice: 0.0472 - val_hard_sorensen_dice: 0.1264
+Epoch 9/50
+
+Epoch 00009: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.5524 - binary_crossentropy: 0.5524 - soft_sorensen_dice: 0.0499 - hard_sorensen_dice: 0.2217 - val_loss: 0.6031 - val_binary_crossentropy: 0.6031 - val_soft_sorensen_dice: 0.0468 - val_hard_sorensen_dice: 0.0758
+Epoch 10/50
+
+Epoch 00010: val_soft_sorensen_dice improved from 0.05193 to 0.05245, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-10-0.0524.hdf5
+ - 81s - loss: 0.5157 - binary_crossentropy: 0.5157 - soft_sorensen_dice: 0.0535 - hard_sorensen_dice: 0.2647 - val_loss: 0.6981 - val_binary_crossentropy: 0.6981 - val_soft_sorensen_dice: 0.0524 - val_hard_sorensen_dice: 0.0807
+Epoch 11/50
+
+Epoch 00011: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.4773 - binary_crossentropy: 0.4773 - soft_sorensen_dice: 0.0541 - hard_sorensen_dice: 0.3209 - val_loss: 0.6848 - val_binary_crossentropy: 0.6848 - val_soft_sorensen_dice: 0.0496 - val_hard_sorensen_dice: 0.0779
+Epoch 12/50
+
+Epoch 00012: val_soft_sorensen_dice improved from 0.05245 to 0.05420, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-12-0.0542.hdf5
+ - 81s - loss: 0.4440 - binary_crossentropy: 0.4440 - soft_sorensen_dice: 0.0588 - hard_sorensen_dice: 0.3407 - val_loss: 0.8231 - val_binary_crossentropy: 0.8231 - val_soft_sorensen_dice: 0.0542 - val_hard_sorensen_dice: 0.1021
+Epoch 13/50
+
+Epoch 00013: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.4100 - binary_crossentropy: 0.4100 - soft_sorensen_dice: 0.0610 - hard_sorensen_dice: 0.3948 - val_loss: 0.7819 - val_binary_crossentropy: 0.7819 - val_soft_sorensen_dice: 0.0522 - val_hard_sorensen_dice: 0.0949
+Epoch 14/50
+
+Epoch 00014: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.3839 - binary_crossentropy: 0.3839 - soft_sorensen_dice: 0.0617 - hard_sorensen_dice: 0.4072 - val_loss: 0.6861 - val_binary_crossentropy: 0.6861 - val_soft_sorensen_dice: 0.0518 - val_hard_sorensen_dice: 0.1235
+Epoch 15/50
+
+Epoch 00015: val_soft_sorensen_dice improved from 0.05420 to 0.05632, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-15-0.0563.hdf5
+ - 81s - loss: 0.3627 - binary_crossentropy: 0.3627 - soft_sorensen_dice: 0.0657 - hard_sorensen_dice: 0.4204 - val_loss: 0.6126 - val_binary_crossentropy: 0.6126 - val_soft_sorensen_dice: 0.0563 - val_hard_sorensen_dice: 0.2360
+Epoch 16/50
+
+Epoch 00016: val_soft_sorensen_dice improved from 0.05632 to 0.05960, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-16-0.0596.hdf5
+ - 81s - loss: 0.3478 - binary_crossentropy: 0.3478 - soft_sorensen_dice: 0.0693 - hard_sorensen_dice: 0.4295 - val_loss: 0.5391 - val_binary_crossentropy: 0.5391 - val_soft_sorensen_dice: 0.0596 - val_hard_sorensen_dice: 0.2909
+Epoch 17/50
+
+Epoch 00017: val_soft_sorensen_dice improved from 0.05960 to 0.06599, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-17-0.0660.hdf5
+ - 81s - loss: 0.3325 - binary_crossentropy: 0.3325 - soft_sorensen_dice: 0.0704 - hard_sorensen_dice: 0.4567 - val_loss: 0.5026 - val_binary_crossentropy: 0.5026 - val_soft_sorensen_dice: 0.0660 - val_hard_sorensen_dice: 0.3647
+Epoch 18/50
+
+Epoch 00018: val_soft_sorensen_dice improved from 0.06599 to 0.06769, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-18-0.0677.hdf5
+ - 81s - loss: 0.3225 - binary_crossentropy: 0.3225 - soft_sorensen_dice: 0.0725 - hard_sorensen_dice: 0.4539 - val_loss: 0.4245 - val_binary_crossentropy: 0.4245 - val_soft_sorensen_dice: 0.0677 - val_hard_sorensen_dice: 0.4020
+Epoch 19/50
+
+Epoch 00019: val_soft_sorensen_dice improved from 0.06769 to 0.07285, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-19-0.0729.hdf5
+ - 81s - loss: 0.3088 - binary_crossentropy: 0.3088 - soft_sorensen_dice: 0.0764 - hard_sorensen_dice: 0.4635 - val_loss: 0.3878 - val_binary_crossentropy: 0.3878 - val_soft_sorensen_dice: 0.0729 - val_hard_sorensen_dice: 0.4514
+Epoch 20/50
+
+Epoch 00020: val_soft_sorensen_dice improved from 0.07285 to 0.07482, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-20-0.0748.hdf5
+ - 81s - loss: 0.2989 - binary_crossentropy: 0.2989 - soft_sorensen_dice: 0.0789 - hard_sorensen_dice: 0.4723 - val_loss: 0.3373 - val_binary_crossentropy: 0.3373 - val_soft_sorensen_dice: 0.0748 - val_hard_sorensen_dice: 0.4540
+Epoch 21/50
+
+Epoch 00021: val_soft_sorensen_dice improved from 0.07482 to 0.07821, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-21-0.0782.hdf5
+ - 81s - loss: 0.2887 - binary_crossentropy: 0.2887 - soft_sorensen_dice: 0.0795 - hard_sorensen_dice: 0.4775 - val_loss: 0.3094 - val_binary_crossentropy: 0.3094 - val_soft_sorensen_dice: 0.0782 - val_hard_sorensen_dice: 0.4878
+Epoch 22/50
+
+Epoch 00022: val_soft_sorensen_dice improved from 0.07821 to 0.08311, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-22-0.0831.hdf5
+ - 81s - loss: 0.2808 - binary_crossentropy: 0.2808 - soft_sorensen_dice: 0.0804 - hard_sorensen_dice: 0.4705 - val_loss: 0.3133 - val_binary_crossentropy: 0.3133 - val_soft_sorensen_dice: 0.0831 - val_hard_sorensen_dice: 0.4804
+Epoch 23/50
+
+Epoch 00023: val_soft_sorensen_dice improved from 0.08311 to 0.08554, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-23-0.0855.hdf5
+ - 81s - loss: 0.2720 - binary_crossentropy: 0.2720 - soft_sorensen_dice: 0.0822 - hard_sorensen_dice: 0.4813 - val_loss: 0.2912 - val_binary_crossentropy: 0.2912 - val_soft_sorensen_dice: 0.0855 - val_hard_sorensen_dice: 0.4674
+Epoch 24/50
+
+Epoch 00024: val_soft_sorensen_dice improved from 0.08554 to 0.08835, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-24-0.0883.hdf5
+ - 81s - loss: 0.2652 - binary_crossentropy: 0.2652 - soft_sorensen_dice: 0.0832 - hard_sorensen_dice: 0.4797 - val_loss: 0.2790 - val_binary_crossentropy: 0.2790 - val_soft_sorensen_dice: 0.0883 - val_hard_sorensen_dice: 0.4767
+Epoch 25/50
+
+Epoch 00025: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.2545 - binary_crossentropy: 0.2545 - soft_sorensen_dice: 0.0873 - hard_sorensen_dice: 0.4809 - val_loss: 0.2407 - val_binary_crossentropy: 0.2407 - val_soft_sorensen_dice: 0.0870 - val_hard_sorensen_dice: 0.4718
+Epoch 26/50
+
+Epoch 00026: val_soft_sorensen_dice improved from 0.08835 to 0.09851, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-26-0.0985.hdf5
+ - 81s - loss: 0.2484 - binary_crossentropy: 0.2484 - soft_sorensen_dice: 0.0871 - hard_sorensen_dice: 0.4868 - val_loss: 0.2699 - val_binary_crossentropy: 0.2699 - val_soft_sorensen_dice: 0.0985 - val_hard_sorensen_dice: 0.4976
+Epoch 27/50
+
+Epoch 00027: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.2381 - binary_crossentropy: 0.2381 - soft_sorensen_dice: 0.0919 - hard_sorensen_dice: 0.5001 - val_loss: 0.2169 - val_binary_crossentropy: 0.2169 - val_soft_sorensen_dice: 0.0919 - val_hard_sorensen_dice: 0.4897
+Epoch 28/50
+
+Epoch 00028: val_soft_sorensen_dice improved from 0.09851 to 0.10219, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-28-0.1022.hdf5
+ - 81s - loss: 0.2295 - binary_crossentropy: 0.2295 - soft_sorensen_dice: 0.0946 - hard_sorensen_dice: 0.5024 - val_loss: 0.2355 - val_binary_crossentropy: 0.2355 - val_soft_sorensen_dice: 0.1022 - val_hard_sorensen_dice: 0.5017
+Epoch 29/50
+
+Epoch 00029: val_soft_sorensen_dice improved from 0.10219 to 0.10353, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-29-0.1035.hdf5
+ - 81s - loss: 0.2228 - binary_crossentropy: 0.2228 - soft_sorensen_dice: 0.0966 - hard_sorensen_dice: 0.5023 - val_loss: 0.2081 - val_binary_crossentropy: 0.2081 - val_soft_sorensen_dice: 0.1035 - val_hard_sorensen_dice: 0.5100
+Epoch 30/50
+
+Epoch 00030: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.2166 - binary_crossentropy: 0.2166 - soft_sorensen_dice: 0.0993 - hard_sorensen_dice: 0.5009 - val_loss: 0.2013 - val_binary_crossentropy: 0.2013 - val_soft_sorensen_dice: 0.1031 - val_hard_sorensen_dice: 0.4947
+Epoch 31/50
+
+Epoch 00031: val_soft_sorensen_dice improved from 0.10353 to 0.11142, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-31-0.1114.hdf5
+ - 81s - loss: 0.2104 - binary_crossentropy: 0.2104 - soft_sorensen_dice: 0.1020 - hard_sorensen_dice: 0.5032 - val_loss: 0.2196 - val_binary_crossentropy: 0.2196 - val_soft_sorensen_dice: 0.1114 - val_hard_sorensen_dice: 0.5019
+Epoch 32/50
+
+Epoch 00032: val_soft_sorensen_dice improved from 0.11142 to 0.11286, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-32-0.1129.hdf5
+ - 81s - loss: 0.2030 - binary_crossentropy: 0.2030 - soft_sorensen_dice: 0.1050 - hard_sorensen_dice: 0.5161 - val_loss: 0.1899 - val_binary_crossentropy: 0.1899 - val_soft_sorensen_dice: 0.1129 - val_hard_sorensen_dice: 0.5190
+Epoch 33/50
+
+Epoch 00033: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.1967 - binary_crossentropy: 0.1967 - soft_sorensen_dice: 0.1062 - hard_sorensen_dice: 0.5152 - val_loss: 0.1809 - val_binary_crossentropy: 0.1809 - val_soft_sorensen_dice: 0.1091 - val_hard_sorensen_dice: 0.5032
+Epoch 34/50
+
+Epoch 00034: val_soft_sorensen_dice improved from 0.11286 to 0.11581, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-34-0.1158.hdf5
+ - 81s - loss: 0.1912 - binary_crossentropy: 0.1912 - soft_sorensen_dice: 0.1084 - hard_sorensen_dice: 0.5162 - val_loss: 0.1758 - val_binary_crossentropy: 0.1758 - val_soft_sorensen_dice: 0.1158 - val_hard_sorensen_dice: 0.5086
+Epoch 35/50
+
+Epoch 00035: val_soft_sorensen_dice improved from 0.11581 to 0.12261, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-35-0.1226.hdf5
+ - 81s - loss: 0.1876 - binary_crossentropy: 0.1876 - soft_sorensen_dice: 0.1122 - hard_sorensen_dice: 0.5173 - val_loss: 0.1781 - val_binary_crossentropy: 0.1781 - val_soft_sorensen_dice: 0.1226 - val_hard_sorensen_dice: 0.5254
+Epoch 36/50
+
+Epoch 00036: val_soft_sorensen_dice improved from 0.12261 to 0.12542, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-36-0.1254.hdf5
+ - 81s - loss: 0.1823 - binary_crossentropy: 0.1823 - soft_sorensen_dice: 0.1130 - hard_sorensen_dice: 0.5127 - val_loss: 0.1693 - val_binary_crossentropy: 0.1693 - val_soft_sorensen_dice: 0.1254 - val_hard_sorensen_dice: 0.5242
+Epoch 37/50
+
+Epoch 00037: val_soft_sorensen_dice improved from 0.12542 to 0.12949, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-37-0.1295.hdf5
+ - 81s - loss: 0.1756 - binary_crossentropy: 0.1756 - soft_sorensen_dice: 0.1185 - hard_sorensen_dice: 0.5265 - val_loss: 0.1618 - val_binary_crossentropy: 0.1618 - val_soft_sorensen_dice: 0.1295 - val_hard_sorensen_dice: 0.5295
+Epoch 38/50
+
+Epoch 00038: val_soft_sorensen_dice improved from 0.12949 to 0.13082, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-38-0.1308.hdf5
+ - 81s - loss: 0.1718 - binary_crossentropy: 0.1718 - soft_sorensen_dice: 0.1167 - hard_sorensen_dice: 0.5189 - val_loss: 0.1632 - val_binary_crossentropy: 0.1632 - val_soft_sorensen_dice: 0.1308 - val_hard_sorensen_dice: 0.5334
+Epoch 39/50
+
+Epoch 00039: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.1684 - binary_crossentropy: 0.1684 - soft_sorensen_dice: 0.1199 - hard_sorensen_dice: 0.5167 - val_loss: 0.1493 - val_binary_crossentropy: 0.1493 - val_soft_sorensen_dice: 0.1269 - val_hard_sorensen_dice: 0.5064
+Epoch 40/50
+
+Epoch 00040: val_soft_sorensen_dice improved from 0.13082 to 0.13126, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-40-0.1313.hdf5
+ - 81s - loss: 0.1615 - binary_crossentropy: 0.1615 - soft_sorensen_dice: 0.1274 - hard_sorensen_dice: 0.5325 - val_loss: 0.1483 - val_binary_crossentropy: 0.1483 - val_soft_sorensen_dice: 0.1313 - val_hard_sorensen_dice: 0.5282
+Epoch 41/50
+
+Epoch 00041: val_soft_sorensen_dice improved from 0.13126 to 0.14053, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-41-0.1405.hdf5
+ - 81s - loss: 0.1576 - binary_crossentropy: 0.1576 - soft_sorensen_dice: 0.1273 - hard_sorensen_dice: 0.5382 - val_loss: 0.1633 - val_binary_crossentropy: 0.1633 - val_soft_sorensen_dice: 0.1405 - val_hard_sorensen_dice: 0.5394
+Epoch 42/50
+
+Epoch 00042: val_soft_sorensen_dice improved from 0.14053 to 0.14156, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-42-0.1416.hdf5
+ - 81s - loss: 0.1536 - binary_crossentropy: 0.1536 - soft_sorensen_dice: 0.1301 - hard_sorensen_dice: 0.5366 - val_loss: 0.1571 - val_binary_crossentropy: 0.1571 - val_soft_sorensen_dice: 0.1416 - val_hard_sorensen_dice: 0.5347
+Epoch 43/50
+
+Epoch 00043: val_soft_sorensen_dice improved from 0.14156 to 0.15121, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-43-0.1512.hdf5
+ - 81s - loss: 0.1502 - binary_crossentropy: 0.1502 - soft_sorensen_dice: 0.1311 - hard_sorensen_dice: 0.5289 - val_loss: 0.1482 - val_binary_crossentropy: 0.1482 - val_soft_sorensen_dice: 0.1512 - val_hard_sorensen_dice: 0.5468
+Epoch 44/50
+
+Epoch 00044: val_soft_sorensen_dice did not improve
+ - 80s - loss: 0.1453 - binary_crossentropy: 0.1453 - soft_sorensen_dice: 0.1394 - hard_sorensen_dice: 0.5407 - val_loss: 0.1350 - val_binary_crossentropy: 0.1350 - val_soft_sorensen_dice: 0.1458 - val_hard_sorensen_dice: 0.5347
+Epoch 45/50
+
+Epoch 00045: val_soft_sorensen_dice did not improve
+ - 80s - loss: 0.1417 - binary_crossentropy: 0.1417 - soft_sorensen_dice: 0.1382 - hard_sorensen_dice: 0.5297 - val_loss: 0.1312 - val_binary_crossentropy: 0.1312 - val_soft_sorensen_dice: 0.1458 - val_hard_sorensen_dice: 0.5244
+Epoch 46/50
+
+Epoch 00046: val_soft_sorensen_dice did not improve
+ - 80s - loss: 0.1379 - binary_crossentropy: 0.1379 - soft_sorensen_dice: 0.1456 - hard_sorensen_dice: 0.5479 - val_loss: 0.1202 - val_binary_crossentropy: 0.1202 - val_soft_sorensen_dice: 0.1307 - val_hard_sorensen_dice: 0.4576
+Epoch 47/50
+
+Epoch 00047: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.1336 - binary_crossentropy: 0.1336 - soft_sorensen_dice: 0.1470 - hard_sorensen_dice: 0.5570 - val_loss: 0.1248 - val_binary_crossentropy: 0.1248 - val_soft_sorensen_dice: 0.1505 - val_hard_sorensen_dice: 0.5262
+Epoch 48/50
+
+Epoch 00048: val_soft_sorensen_dice did not improve
+ - 80s - loss: 0.1299 - binary_crossentropy: 0.1299 - soft_sorensen_dice: 0.1542 - hard_sorensen_dice: 0.5635 - val_loss: 0.1161 - val_binary_crossentropy: 0.1161 - val_soft_sorensen_dice: 0.1397 - val_hard_sorensen_dice: 0.4825
+Epoch 49/50
+
+Epoch 00049: val_soft_sorensen_dice improved from 0.15121 to 0.16761, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-49-0.1676.hdf5
+ - 81s - loss: 0.1256 - binary_crossentropy: 0.1256 - soft_sorensen_dice: 0.1586 - hard_sorensen_dice: 0.5693 - val_loss: 0.1375 - val_binary_crossentropy: 0.1375 - val_soft_sorensen_dice: 0.1676 - val_hard_sorensen_dice: 0.5548
+Epoch 50/50
+
+Epoch 00050: val_soft_sorensen_dice did not improve
+ - 80s - loss: 0.1220 - binary_crossentropy: 0.1220 - soft_sorensen_dice: 0.1624 - hard_sorensen_dice: 0.5698 - val_loss: 0.1222 - val_binary_crossentropy: 0.1222 - val_soft_sorensen_dice: 0.1631 - val_hard_sorensen_dice: 0.5410

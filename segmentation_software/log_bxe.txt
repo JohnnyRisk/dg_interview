@@ -1,0 +1,207 @@
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            (None, 256, 256, 3)  0                                            
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 256, 256, 32) 896         input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 256, 256, 32) 9248        conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 256, 256, 32) 128         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+max_pooling2d_1 (MaxPooling2D)  (None, 128, 128, 32) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 128, 128, 64) 18496       max_pooling2d_1[0][0]            
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 128, 128, 64) 36928       conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 128, 128, 64) 256         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+max_pooling2d_2 (MaxPooling2D)  (None, 64, 64, 64)   0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 64, 64, 128)  73856       max_pooling2d_2[0][0]            
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 64, 64, 128)  147584      conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 64, 64, 128)  512         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+max_pooling2d_3 (MaxPooling2D)  (None, 32, 32, 128)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 32, 32, 256)  295168      max_pooling2d_3[0][0]            
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 32, 32, 256)  590080      conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 32, 32, 256)  1024        conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+conv2d_transpose_1 (Conv2DTrans (None, 64, 64, 128)  131200      batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 64, 64, 256)  0           conv2d_transpose_1[0][0]         
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 64, 64, 128)  295040      concatenate_1[0][0]              
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 64, 64, 128)  147584      conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 64, 64, 128)  512         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+conv2d_transpose_2 (Conv2DTrans (None, 128, 128, 64) 32832       batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+concatenate_2 (Concatenate)     (None, 128, 128, 128 0           conv2d_transpose_2[0][0]         
+                                                                 batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 128, 128, 64) 73792       concatenate_2[0][0]              
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 128, 128, 64) 36928       conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 128, 128, 64) 256         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+conv2d_transpose_3 (Conv2DTrans (None, 256, 256, 32) 8224        batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+concatenate_3 (Concatenate)     (None, 256, 256, 64) 0           conv2d_transpose_3[0][0]         
+                                                                 batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 256, 256, 32) 18464       concatenate_3[0][0]              
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 256, 256, 32) 9248        conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 256, 256, 32) 128         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 256, 256, 1)  33          batch_normalization_7[0][0]      
+==================================================================================================
+Total params: 1,928,417
+Trainable params: 1,927,009
+Non-trainable params: 1,408
+__________________________________________________________________________________________________
+Epoch 1/200
+
+Epoch 00001: val_soft_sorensen_dice improved from -inf to 0.61488, saving model to /home/ubuntu/data/segmentation/checkpoints/weights-01-0.6149.hdf5
+ - 95s - loss: 0.1246 - binary_crossentropy_jaccard_loss: 0.4686 - soft_sorensen_dice: 0.6901 - hard_sorensen_dice: 0.6909 - val_loss: 0.1251 - val_binary_crossentropy_jaccard_loss: 0.5762 - val_soft_sorensen_dice: 0.6149 - val_hard_sorensen_dice: 0.6163
+Epoch 2/200
+
+Epoch 00002: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.1090 - binary_crossentropy_jaccard_loss: 0.4926 - soft_sorensen_dice: 0.6696 - hard_sorensen_dice: 0.6737 - val_loss: 0.1215 - val_binary_crossentropy_jaccard_loss: 0.6075 - val_soft_sorensen_dice: 0.5897 - val_hard_sorensen_dice: 0.5914
+Epoch 3/200
+
+Epoch 00003: val_soft_sorensen_dice did not improve
+ - 80s - loss: 0.1018 - binary_crossentropy_jaccard_loss: 0.5060 - soft_sorensen_dice: 0.6634 - hard_sorensen_dice: 0.6709 - val_loss: 0.1174 - val_binary_crossentropy_jaccard_loss: 0.6394 - val_soft_sorensen_dice: 0.5643 - val_hard_sorensen_dice: 0.5661
+Epoch 4/200
+
+Epoch 00004: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0882 - binary_crossentropy_jaccard_loss: 0.5714 - soft_sorensen_dice: 0.6193 - hard_sorensen_dice: 0.6433 - val_loss: 0.1031 - val_binary_crossentropy_jaccard_loss: 0.7084 - val_soft_sorensen_dice: 0.5172 - val_hard_sorensen_dice: 0.5245
+Epoch 5/200
+
+Epoch 00005: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0658 - binary_crossentropy_jaccard_loss: 0.7020 - soft_sorensen_dice: 0.5337 - hard_sorensen_dice: 0.6313 - val_loss: 0.0842 - val_binary_crossentropy_jaccard_loss: 0.8117 - val_soft_sorensen_dice: 0.4705 - val_hard_sorensen_dice: 0.5060
+Epoch 6/200
+
+Epoch 00006: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0605 - binary_crossentropy_jaccard_loss: 0.8133 - soft_sorensen_dice: 0.4698 - hard_sorensen_dice: 0.6230 - val_loss: 0.0730 - val_binary_crossentropy_jaccard_loss: 0.8439 - val_soft_sorensen_dice: 0.4461 - val_hard_sorensen_dice: 0.4941
+Epoch 7/200
+
+Epoch 00007: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0573 - binary_crossentropy_jaccard_loss: 0.8220 - soft_sorensen_dice: 0.4624 - hard_sorensen_dice: 0.6023 - val_loss: 0.0669 - val_binary_crossentropy_jaccard_loss: 0.8626 - val_soft_sorensen_dice: 0.4304 - val_hard_sorensen_dice: 0.4833
+Epoch 8/200
+
+Epoch 00008: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0541 - binary_crossentropy_jaccard_loss: 0.8333 - soft_sorensen_dice: 0.4600 - hard_sorensen_dice: 0.5961 - val_loss: 0.0626 - val_binary_crossentropy_jaccard_loss: 0.8627 - val_soft_sorensen_dice: 0.4300 - val_hard_sorensen_dice: 0.4872
+Epoch 9/200
+
+Epoch 00009: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0493 - binary_crossentropy_jaccard_loss: 0.8028 - soft_sorensen_dice: 0.4772 - hard_sorensen_dice: 0.5999 - val_loss: 0.0603 - val_binary_crossentropy_jaccard_loss: 0.8457 - val_soft_sorensen_dice: 0.4362 - val_hard_sorensen_dice: 0.4868
+Epoch 10/200
+
+Epoch 00010: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0501 - binary_crossentropy_jaccard_loss: 0.8332 - soft_sorensen_dice: 0.4663 - hard_sorensen_dice: 0.5962 - val_loss: 0.0564 - val_binary_crossentropy_jaccard_loss: 0.8403 - val_soft_sorensen_dice: 0.4435 - val_hard_sorensen_dice: 0.5031
+Epoch 11/200
+
+Epoch 00011: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0450 - binary_crossentropy_jaccard_loss: 0.7894 - soft_sorensen_dice: 0.4925 - hard_sorensen_dice: 0.6037 - val_loss: 0.0528 - val_binary_crossentropy_jaccard_loss: 0.8261 - val_soft_sorensen_dice: 0.4599 - val_hard_sorensen_dice: 0.5323
+Epoch 12/200
+
+Epoch 00012: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0425 - binary_crossentropy_jaccard_loss: 0.7837 - soft_sorensen_dice: 0.4994 - hard_sorensen_dice: 0.6200 - val_loss: 0.0522 - val_binary_crossentropy_jaccard_loss: 0.8006 - val_soft_sorensen_dice: 0.4674 - val_hard_sorensen_dice: 0.5243
+Epoch 13/200
+
+Epoch 00013: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0412 - binary_crossentropy_jaccard_loss: 0.7676 - soft_sorensen_dice: 0.5102 - hard_sorensen_dice: 0.6228 - val_loss: 0.0505 - val_binary_crossentropy_jaccard_loss: 0.8141 - val_soft_sorensen_dice: 0.4613 - val_hard_sorensen_dice: 0.5250
+Epoch 14/200
+
+Epoch 00014: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0383 - binary_crossentropy_jaccard_loss: 0.7666 - soft_sorensen_dice: 0.5126 - hard_sorensen_dice: 0.6282 - val_loss: 0.0477 - val_binary_crossentropy_jaccard_loss: 0.8069 - val_soft_sorensen_dice: 0.4702 - val_hard_sorensen_dice: 0.5432
+Epoch 15/200
+
+Epoch 00015: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0384 - binary_crossentropy_jaccard_loss: 0.7554 - soft_sorensen_dice: 0.5185 - hard_sorensen_dice: 0.6303 - val_loss: 0.0461 - val_binary_crossentropy_jaccard_loss: 0.8061 - val_soft_sorensen_dice: 0.4740 - val_hard_sorensen_dice: 0.5545
+Epoch 16/200
+
+Epoch 00016: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0368 - binary_crossentropy_jaccard_loss: 0.7429 - soft_sorensen_dice: 0.5249 - hard_sorensen_dice: 0.6386 - val_loss: 0.0456 - val_binary_crossentropy_jaccard_loss: 0.7960 - val_soft_sorensen_dice: 0.4782 - val_hard_sorensen_dice: 0.5544
+Epoch 17/200
+
+Epoch 00017: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0377 - binary_crossentropy_jaccard_loss: 0.7471 - soft_sorensen_dice: 0.5184 - hard_sorensen_dice: 0.6272 - val_loss: 0.0446 - val_binary_crossentropy_jaccard_loss: 0.8023 - val_soft_sorensen_dice: 0.4762 - val_hard_sorensen_dice: 0.5566
+Epoch 18/200
+
+Epoch 00018: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0373 - binary_crossentropy_jaccard_loss: 0.7362 - soft_sorensen_dice: 0.5312 - hard_sorensen_dice: 0.6354 - val_loss: 0.0443 - val_binary_crossentropy_jaccard_loss: 0.7971 - val_soft_sorensen_dice: 0.4807 - val_hard_sorensen_dice: 0.5631
+Epoch 19/200
+
+Epoch 00019: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0371 - binary_crossentropy_jaccard_loss: 0.7472 - soft_sorensen_dice: 0.5249 - hard_sorensen_dice: 0.6348 - val_loss: 0.0443 - val_binary_crossentropy_jaccard_loss: 0.7952 - val_soft_sorensen_dice: 0.4797 - val_hard_sorensen_dice: 0.5589
+Epoch 20/200
+
+Epoch 00020: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0358 - binary_crossentropy_jaccard_loss: 0.7420 - soft_sorensen_dice: 0.5255 - hard_sorensen_dice: 0.6331 - val_loss: 0.0441 - val_binary_crossentropy_jaccard_loss: 0.7975 - val_soft_sorensen_dice: 0.4776 - val_hard_sorensen_dice: 0.5567
+Epoch 21/200
+
+Epoch 00021: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0351 - binary_crossentropy_jaccard_loss: 0.7273 - soft_sorensen_dice: 0.5363 - hard_sorensen_dice: 0.6413 - val_loss: 0.0437 - val_binary_crossentropy_jaccard_loss: 0.7975 - val_soft_sorensen_dice: 0.4769 - val_hard_sorensen_dice: 0.5549
+Epoch 22/200
+
+Epoch 00022: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0342 - binary_crossentropy_jaccard_loss: 0.7327 - soft_sorensen_dice: 0.5321 - hard_sorensen_dice: 0.6461 - val_loss: 0.0427 - val_binary_crossentropy_jaccard_loss: 0.7929 - val_soft_sorensen_dice: 0.4792 - val_hard_sorensen_dice: 0.5573
+Epoch 23/200
+
+Epoch 00023: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0344 - binary_crossentropy_jaccard_loss: 0.7287 - soft_sorensen_dice: 0.5361 - hard_sorensen_dice: 0.6437 - val_loss: 0.0426 - val_binary_crossentropy_jaccard_loss: 0.8008 - val_soft_sorensen_dice: 0.4721 - val_hard_sorensen_dice: 0.5456
+Epoch 24/200
+
+Epoch 00024: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0347 - binary_crossentropy_jaccard_loss: 0.7312 - soft_sorensen_dice: 0.5301 - hard_sorensen_dice: 0.6381 - val_loss: 0.0429 - val_binary_crossentropy_jaccard_loss: 0.7897 - val_soft_sorensen_dice: 0.4762 - val_hard_sorensen_dice: 0.5433
+Epoch 25/200
+
+Epoch 00025: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0345 - binary_crossentropy_jaccard_loss: 0.7267 - soft_sorensen_dice: 0.5363 - hard_sorensen_dice: 0.6449 - val_loss: 0.0412 - val_binary_crossentropy_jaccard_loss: 0.7911 - val_soft_sorensen_dice: 0.4845 - val_hard_sorensen_dice: 0.5719
+Epoch 26/200
+
+Epoch 00026: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0341 - binary_crossentropy_jaccard_loss: 0.7111 - soft_sorensen_dice: 0.5467 - hard_sorensen_dice: 0.6549 - val_loss: 0.0429 - val_binary_crossentropy_jaccard_loss: 0.7832 - val_soft_sorensen_dice: 0.4807 - val_hard_sorensen_dice: 0.5509
+Epoch 27/200
+
+Epoch 00027: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0357 - binary_crossentropy_jaccard_loss: 0.7296 - soft_sorensen_dice: 0.5407 - hard_sorensen_dice: 0.6494 - val_loss: 0.0410 - val_binary_crossentropy_jaccard_loss: 0.7878 - val_soft_sorensen_dice: 0.4886 - val_hard_sorensen_dice: 0.5805
+Epoch 28/200
+
+Epoch 00028: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0341 - binary_crossentropy_jaccard_loss: 0.7138 - soft_sorensen_dice: 0.5417 - hard_sorensen_dice: 0.6439 - val_loss: 0.0415 - val_binary_crossentropy_jaccard_loss: 0.7780 - val_soft_sorensen_dice: 0.4890 - val_hard_sorensen_dice: 0.5686
+Epoch 29/200
+
+Epoch 00029: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0346 - binary_crossentropy_jaccard_loss: 0.7107 - soft_sorensen_dice: 0.5475 - hard_sorensen_dice: 0.6453 - val_loss: 0.0419 - val_binary_crossentropy_jaccard_loss: 0.7735 - val_soft_sorensen_dice: 0.4902 - val_hard_sorensen_dice: 0.5663
+Epoch 30/200
+
+Epoch 00030: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0336 - binary_crossentropy_jaccard_loss: 0.7192 - soft_sorensen_dice: 0.5402 - hard_sorensen_dice: 0.6463 - val_loss: 0.0406 - val_binary_crossentropy_jaccard_loss: 0.7903 - val_soft_sorensen_dice: 0.4875 - val_hard_sorensen_dice: 0.5824
+Epoch 31/200
+
+Epoch 00031: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0335 - binary_crossentropy_jaccard_loss: 0.7167 - soft_sorensen_dice: 0.5416 - hard_sorensen_dice: 0.6409 - val_loss: 0.0422 - val_binary_crossentropy_jaccard_loss: 0.7707 - val_soft_sorensen_dice: 0.4886 - val_hard_sorensen_dice: 0.5598
+Epoch 32/200
+
+Epoch 00032: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0323 - binary_crossentropy_jaccard_loss: 0.7036 - soft_sorensen_dice: 0.5529 - hard_sorensen_dice: 0.6615 - val_loss: 0.0411 - val_binary_crossentropy_jaccard_loss: 0.7760 - val_soft_sorensen_dice: 0.4875 - val_hard_sorensen_dice: 0.5624
+Epoch 33/200
+
+Epoch 00033: val_soft_sorensen_dice did not improve
+ - 81s - loss: 0.0321 - binary_crossentropy_jaccard_loss: 0.7003 - soft_sorensen_dice: 0.5505 - hard_sorensen_dice: 0.6504 - val_loss: 0.0415 - val_binary_crossentropy_jaccard_loss: 0.7686 - val_soft_sorensen_dice: 0.4929 - val_hard_sorensen_dice: 0.5672
+Epoch 34/200
